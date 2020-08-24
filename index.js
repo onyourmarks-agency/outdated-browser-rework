@@ -57,6 +57,8 @@ module.exports = function(options) {
 		var textColor = options.textColor || COLORS.white
 		var fullscreen = options.fullscreen || false
 		var language = options.language || browserLocale.slice(0, 2) // Language code
+		var dismissValidSeconds = options.dismissValidSeconds || 604800; // One week
+		var dismissLocalStorageKey = options.dismissLocalStorage || 'outdatedBrowserDismiss';
 
 		var updateSource = "web" // Other possible values are 'googlePlay' or 'appStore'. Determines where we tell users to go for upgrades.
 
@@ -75,20 +77,31 @@ module.exports = function(options) {
 			updateSource = "appStore"
 		}
 
-		var done = true
+		var done = true;
 
-		var changeOpacity = function(opacityValue) {
-			outdatedUI.style.opacity = opacityValue / 100
-			outdatedUI.style.filter = "alpha(opacity=" + opacityValue + ")"
+		// Has local storage?
+		var localStorageIsSupported = function() {
+			return Storage !== void(0);
 		}
 
-		var fadeIn = function(opacityValue) {
-			changeOpacity(opacityValue)
-			if (opacityValue === 1) {
-				outdatedUI.style.display = "table"
+		// Match if message is closed earlier
+		var messageIsClosedBefore = function() {
+			if (!localStorageIsSupported()) {
+				return false
 			}
-			if (opacityValue === 100) {
-				done = true
+
+			var closedTimestamp = Math.floor(window.localStorage.getItem(dismissLocalStorageKey));
+			var now = new Date().getTime();
+
+			if (!closedTimestamp) {
+				return false;
+			}
+
+			if (now < closedTimestamp + dismissValidSeconds) {
+				return true;
+			} else {
+				window.localStorage.removeItem(dismissLocalStorageKey);
+				return false;
 			}
 		}
 
@@ -168,12 +181,6 @@ module.exports = function(options) {
 			return false
 		}
 
-		var makeFadeInFunction = function(opacityValue) {
-			return function() {
-				fadeIn(opacityValue)
-			}
-		}
-
 		// Style element explicitly - TODO: investigate and delete if not needed
 		var startStylesAndEvents = function() {
 			var buttonClose = document.getElementById("buttonCloseUpdateBrowser")
@@ -209,6 +216,11 @@ module.exports = function(options) {
 
 			buttonClose.onmousedown = function() {
 				outdatedUI.style.display = "none"
+
+				if (localStorageIsSupported()) {
+					window.localStorage.setItem(dismissLocalStorageKey, new Date().getTime());
+				}
+
 				return false
 			}
 		}
@@ -239,6 +251,7 @@ module.exports = function(options) {
 				appStore: "<p>" + messages.update[updateSource] + "</p>"
 			}
 
+			var globalMessage = "<p>" + messages.update.global + "</p>";
 			var updateMessage = updateMessages[updateSource]
 
 			var browserSupportMessage = messages.outOfDate;
@@ -250,6 +263,7 @@ module.exports = function(options) {
 				'<div class="vertical-center"><h6>' +
 				browserSupportMessage +
 				"</h6>" +
+				globalMessage +
 				updateMessage +
 				'<p class="last"><a href="#" id="buttonCloseUpdateBrowser" title="' +
 				messages.close +
@@ -258,14 +272,12 @@ module.exports = function(options) {
 		}
 
 		// Check if browser is supported
-		if (isBrowserOutOfDate() || !isPropertySupported(requiredCssProperty) || isAndroidButNotChrome) {
+		if ((isBrowserOutOfDate() || !isPropertySupported(requiredCssProperty) || isAndroidButNotChrome) && !messageIsClosedBefore()) {
 			// This is an outdated browser
-			if (done && outdatedUI.style.opacity !== "1") {
+			if (done) {
 				done = false
 
-				for (var opacity = 1; opacity <= 100; opacity++) {
-					setTimeout(makeFadeInFunction(opacity), opacity * 8)
-				}
+				outdatedUI.style.display = "table";
 			}
 
 			var insertContentHere = document.getElementById("outdated")

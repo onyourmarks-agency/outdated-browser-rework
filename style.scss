@@ -4,29 +4,30 @@ $primaryColor: $salmon;
 $secondaryColor: white;
 
 #outdated {
-	font-family: "Open Sans", "Segoe UI", sans-serif;
-	position:absolute;
+	font-family: sans-serif;
+	position: absolute;
+	position: fixed;
 	background-color: $primaryColor;
 	color: $secondaryColor;
 	display: none;
 	overflow: hidden;
 	left: 0;
-	position: fixed;
 	text-align: center;
-	text-transform: uppercase;
 	top: 0;
 	width: 100%;
 	z-index: 1500;
-	padding: 0 24px 24px 0;
+	padding: 32px;
 
-	&.fullscreen{
+	&.fullscreen {
 		height: 100%;
 	}
-	.vertical-center{
+
+	.vertical-center {
 		display: table-cell;
 		text-align: center;
-		vertical-align: middle;	  
+		vertical-align: middle;
 	}
+
 	h6 {
 		font-size: 25px;
 		line-height: 25px;
@@ -49,6 +50,7 @@ $secondaryColor: white;
 		position: relative;
 		text-decoration: none;
 		width: 230px;
+
 		&:hover {
 			background-color:$secondaryColor;
 			color: $primaryColor;

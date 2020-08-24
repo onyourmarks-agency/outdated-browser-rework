@@ -259,3 +259,9 @@ There's still some TODOs from the original code:
 This rework is made by Mike MacCana and a whole bunch of amazing open source contributors!
 
 The original Outdated Browser is made with love at [Bürocratik](http://burocratik.com)
+
+## Changes in thes fork by TDE
+- Store close-click in LocalStorage (when it's available). The user can use the website in their old browser without the message (for one week);
+- Add new option in languages; global message. Between update message and title;
+- Remove other languages than EN and NL;
+- Remove opacity and transition of message. Show it directly;
