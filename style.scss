@@ -55,7 +55,7 @@ $secondaryColor: white;
 		padding: 10px 20px;
 		position: relative;
 		text-decoration: none;
-		width: 230px;
+		min-width: 200px;
 
 		&:hover {
 			background-color:$secondaryColor;

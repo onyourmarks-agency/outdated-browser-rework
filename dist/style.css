@@ -40,7 +40,7 @@
     padding: 10px 20px;
     position: relative;
     text-decoration: none;
-    width: 230px; }
+    min-width: 200px; }
     #outdated #buttonUpdateBrowser:hover {
       background-color: white;
       color: #dc0e0e; }
