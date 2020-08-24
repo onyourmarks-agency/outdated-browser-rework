@@ -1,4 +1,4 @@
-$salmon: #f25648;
+$salmon: #dc0e0e;
 
 $primaryColor: $salmon;
 $secondaryColor: white;
@@ -13,8 +13,9 @@ $secondaryColor: white;
 	overflow: hidden;
 	left: 0;
 	text-align: center;
-	top: 0;
+	bottom: 0;
 	width: 100%;
+	box-sizing: border-box;
 	z-index: 1500;
 	padding: 32px;
 
@@ -29,15 +30,20 @@ $secondaryColor: white;
 	}
 
 	h6 {
-		font-size: 25px;
+		font-size: 32px;
 		line-height: 25px;
-		margin: 12px 0;
+		margin-bottom: 24px;
+
+		@media screen and (max-width: 640px) {
+			font-size: 24px;
+		}
 	}
 
 	p {
-		font-size: 12px;
-		line-height: 12px;
-		margin: 0;
+		max-width: 680px;
+		font-size: 16px;
+		line-height: 20px;
+		margin: 0 auto 8px;
 	}
 
 	#buttonUpdateBrowser {
@@ -60,10 +66,15 @@ $secondaryColor: white;
 	.last {
 		height: 20px;
 		position: absolute;
-		right: 70px;
+		right: 32px;
 		top: 10px;
 		width: auto;
 		display: inline-table;
+
+		@media screen and (max-width: 640px) {
+			top: 0;
+			right: 8px;
+		}
 	}
 
 	.last[dir=rtl] {

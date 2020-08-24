@@ -2,14 +2,15 @@
   font-family: sans-serif;
   position: absolute;
   position: fixed;
-  background-color: #f25648;
+  background-color: #dc0e0e;
   color: white;
   display: none;
   overflow: hidden;
   left: 0;
   text-align: center;
-  top: 0;
+  bottom: 0;
   width: 100%;
+  box-sizing: border-box;
   z-index: 1500;
   padding: 32px; }
   #outdated.fullscreen {
@@ -19,13 +20,17 @@
     text-align: center;
     vertical-align: middle; }
   #outdated h6 {
-    font-size: 25px;
+    font-size: 32px;
     line-height: 25px;
-    margin: 12px 0; }
+    margin-bottom: 24px; }
+    @media screen and (max-width: 640px) {
+      #outdated h6 {
+        font-size: 24px; } }
   #outdated p {
-    font-size: 12px;
-    line-height: 12px;
-    margin: 0; }
+    max-width: 680px;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0 auto 8px; }
   #outdated #buttonUpdateBrowser {
     border: 2px solid white;
     color: white;
@@ -38,14 +43,18 @@
     width: 230px; }
     #outdated #buttonUpdateBrowser:hover {
       background-color: white;
-      color: #f25648; }
+      color: #dc0e0e; }
   #outdated .last {
     height: 20px;
     position: absolute;
-    right: 70px;
+    right: 32px;
     top: 10px;
     width: auto;
     display: inline-table; }
+    @media screen and (max-width: 640px) {
+      #outdated .last {
+        top: 0;
+        right: 8px; } }
   #outdated .last[dir=rtl] {
     left: 25px !important;
     right: auto !important; }
