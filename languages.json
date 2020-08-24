@@ -3,7 +3,7 @@
 		"outOfDate": "Your browser is out-of-date!",
 		"update": {
 			"global": "You are using a web browser that does not support the latest technology. Update your browser to view this website correctly.",
-			"web": "There are modern and safer browsers such as Firefox or Google Chrome you can easily upgrade for free and view this website properly.",
+			"web": "There are modern and safer browsers such as Firefox, Microsoft Edge or Google Chrome you can easily upgrade for free and view this and other websites properly.",
 			"googlePlay": "Please install Chrome from Google Play",
 			"appStore": "Please update iOS from the Settings App"
 		},
@@ -15,7 +15,7 @@
 		"outOfDate": "Je gebruikt een verouderde browser",
 		"update": {
 			"global": "Je gebruikt een webbrowser die niet de laatste technologie ondersteund. Update je browser om deze website correct te bekijken.",
-			"web": "Er zijn moderne en veiligere browsers zoals Firefox of Google Chrome waar je eenvoudig en gratis naar kunt upgraden om deze website goed te bekijken.",
+			"web": "Er zijn moderne en veiligere browsers zoals Firefox, Microsoft Edge of Google Chrome waarnaar je eenvoudig en gratis kunt upgraden om deze en andere websites goed te bekijken.",
 			"googlePlay": "Installeer Chrome of Firefox vanuit de Play Store of zoek online hoe je een andere browser kunt installeren op jouw apparaat.",
 			"appStore": "Update je iOS versie via instellingen op je apparaat."
 		},
