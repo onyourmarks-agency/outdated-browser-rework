@@ -1,15 +1,16 @@
 {
-	"name": "outdated-browser-rework",
+	"name": "@onyourmarks/outdated-browser-rework",
 	"description": "Detects outdated browsers and asks users to upgrade to a new version. Handles mobile devices!",
-	"version": "2.11.1",
+	"version": "3.0.0",
 	"main": "index.js",
 	"dependencies": {
 		"ua-parser-js": "^0.7.18"
 	},
-	"author": "Mike MacCana <mike.maccana@gmail.com>",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/mikemaccana/outdated-browser-rework.git"
+	"repository": "onyourmarks-agency/oym-cookie-consent",
+	"author": {
+		"name": "On Your Marks",
+		"email": "hosting@onyourmarks.agency",
+		"url": "https://www.onyourmarks.agency/"
 	},
 	"keywords": [
 		"outdated",
