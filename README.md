@@ -196,8 +196,8 @@ module.exports = {
 Secondly, make use of `outdated-browser-rework` in `src/outdated-browser-rework.js`:
 
 ```js
-import outdatedBrowser from "outdated-browser-rework";
-import "outdated-browser-rework/dist/style.css";
+import outdatedBrowser from "@onyourmarks/outdated-browser-rework";
+import "@onyourmarks/outdated-browser-rework/dist/style.css";
 
 outdatedBrowser();
 ```
